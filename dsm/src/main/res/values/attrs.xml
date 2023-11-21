@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
+
+    <style name="Widget" />
+
+    <style name="Widget.App" />
+
+    <style name="Widget.App.Toolbar" />
+
+    <style name="Widget.App.TextInputEditText" />
+
+    <style name="Widget.App.Divider" />
+
+    <!--region Priceline DSM Attributes-->
+    <attr name="textAppearanceBody3" format="reference" />
+    <attr name="textAppearanceBody4" format="reference" />
+    <attr name="textAppearanceButton1" format="reference" />
+    <attr name="textAppearanceButton2" format="reference" />
+
+    <attr name="onHintTextColor" format="color" />
+    <attr name="colorOnPrimaryHighEmphasis" format="color" />
+    <attr name="colorOnPrimaryMediumEmphasis" format="color" />
+    <attr name="colorOnSurfaceHighEmphasis" format="color" />
+    <attr name="colorOnSurfaceMediumEmphasis" format="color" />
+    <attr name="colorBackground" format="color" />
+    <attr name="colorBackgroundSecondary" format="color" />
+    <attr name="colorOnBackgroundHighEmphasis" format="color" />
+    <attr name="colorOnBackgroundMediumEmphasis" format="color" />
+    <attr name="colorDisabled" format="color" />
+    <attr name="colorOnDisabled" format="color" />
+    <attr name="colorOutlineHighEmphasis" format="color" />
+    <attr name="colorOutlineMediumEmphasis" format="color" />
+    <!--endregion-->
+
+</resources>

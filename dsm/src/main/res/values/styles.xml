@@ -1,0 +1,595 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
+    <!--region Theme-->
+    <style name="Theme.App" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!--region Colors-->
+        <!-- Primary brand. -->
+        <item name="colorPrimary">@color/jott_blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">?colorOnPrimaryHighEmphasis</item>
+        <item name="colorOnPrimaryHighEmphasis">@color/white</item>
+        <item name="colorOnPrimaryMediumEmphasis">@color/white_60</item>
+        <!-- Secondary brand. -->
+        <item name="colorSecondary">@color/green</item>
+        <item name="colorSecondaryVariant">@color/dark_green</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Background -->
+        <item name="android:windowBackground">@color/base_gray</item>
+        <item name="colorBackground">@color/base_gray</item>
+        <item name="colorBackgroundSecondary">@color/light_blue</item>
+        <item name="colorOnBackground">@color/darker_blue</item>
+        <item name="colorOnBackgroundHighEmphasis">@color/darker_blue</item>
+        <item name="colorOnBackgroundMediumEmphasis">@color/blue_gray</item>
+        <!-- Surface -->
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">?colorOnSurfaceHighEmphasis</item>
+        <item name="colorOnSurfaceHighEmphasis">@color/darker_blue</item>
+        <item name="colorOnSurfaceMediumEmphasis">@color/blue_gray</item>
+        <!-- Error -->
+        <item name="colorError">@color/red</item>
+        <item name="colorOnError">@color/white</item>
+        <!-- Disabled -->
+        <item name="colorDisabled">@color/darker_blue_38</item>
+        <item name="colorOnDisabled">@color/white_38</item>
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/dark_blue</item>
+        <!-- Color Control -->
+        <item name="colorControlNormal">?colorOnSurfaceMediumEmphasis</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorControlHighlight">@color/ripple_material</item>
+        <!-- Text -->
+        <item name="android:textColorPrimary">?attr/colorOnBackgroundHighEmphasis</item>
+        <item name="android:textColorSecondary">?attr/colorOnBackgroundHighEmphasis</item>
+        <item name="android:textColorTertiary">?attr/colorOnBackgroundHighEmphasis</item>
+        <item name="android:textColorPrimaryInverse">@color/white</item>
+        <!-- Edit text color-->
+        <item name="editTextColor">?android:textColorPrimary</item>
+        <item name="hintTextColor">@color/blue_gray</item>
+        <item name="onHintTextColor">?android:textColorPrimaryInverse</item>
+        <!-- Misc -->
+        <item name="colorOutlineHighEmphasis">@color/gray</item>
+        <item name="colorOutlineMediumEmphasis">@color/light_gray</item>
+        <!--endregion-->
+        <!--region Typography-->
+        <item name="textAppearanceHeadline1">@style/App.TextAppearance.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/App.TextAppearance.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/App.TextAppearance.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/App.TextAppearance.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/App.TextAppearance.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/App.TextAppearance.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/App.TextAppearance.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/App.TextAppearance.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/App.TextAppearance.Body1</item>
+        <item name="textAppearanceBody2">@style/App.TextAppearance.Body2</item>
+        <item name="textAppearanceBody3">@style/App.TextAppearance.Body3</item>
+        <item name="textAppearanceBody4">@style/App.TextAppearance.Body4</item>
+        <item name="textAppearanceButton">@style/App.TextAppearance.Button2</item>
+        <item name="textAppearanceButton1">@style/App.TextAppearance.Button1</item>
+        <item name="textAppearanceButton2">@style/App.TextAppearance.Button2</item>
+        <item name="textAppearanceOverline">@style/App.TextAppearance.Overline</item>
+        <item name="textAppearanceCaption">@style/App.TextAppearance.Body3</item>
+        <item name="android:textAppearanceSmall">?textAppearanceBody2</item>
+        <item name="android:textAppearanceMedium">?textAppearanceBody1</item>
+        <!--endregion-->
+        <!--region Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/App.ShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/App.ShapeAppearance.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/App.ShapeAppearance.LargeComponent</item>
+        <!--endregion-->
+        <!--region Android Components Styles-->
+        <item name="android:toolbarStyle">@style/ThemeOverlay.App.Toolbar.Primary</item>
+        <item name="android:actionBarStyle">@style/ThemeOverlay.App.Toolbar.Primary</item>
+        <item name="android:radioButtonStyle">@style/Widget.App.RadioButton</item>
+        <item name="android:autoCompleteTextViewStyle">
+            @style/Widget.App.AutoCompleteTextView.FilledBox
+        </item>
+        <item name="materialAlertDialogTheme">@style/Widget.App.MaterialAlertDialog</item>
+        <item name="alertDialogTheme">@style/Widget.App.MaterialAlertDialog</item>
+        <item name="android:datePickerDialogTheme">@style/Widget.App.MaterialAlertDialog</item>
+        <item name="android:timePickerDialogTheme">@style/Widget.App.MaterialAlertDialog</item>
+        <item name="listChoiceBackgroundIndicator">?selectableItemBackground</item>
+        <!--endregion-->
+    </style>
+
+    <style name="Theme.App.Benefit">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorSecondary">@color/dark_green</item>
+        <item name="colorBackground">@color/light_green</item>
+        <item name="colorBackgroundSecondary">@color/pale_green</item>
+    </style>
+
+    <style name="Theme.App.Warning">
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorSecondary">@color/dark_red</item>
+        <item name="colorBackground">@color/light_red</item>
+    </style>
+
+    <style name="Theme.App.Alert">
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorSecondary">@color/dark_yellow</item>
+        <item name="colorBackground">@color/yellow</item>
+    </style>
+
+    <style name="Theme.App.Highlight">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorSecondary">@color/dark_orange</item>
+        <item name="colorBackground">@color/light_orange</item>
+    </style>
+
+    <style name="Theme.App.VIP">
+        <item name="colorPrimary">@color/dark_blue</item>
+    </style>
+
+    <style name="Theme.App.VIP.Blue">
+        <item name="colorPrimary">@color/jott_blue</item>
+    </style>
+
+    <style name="Theme.App.VIP.Gold">
+        <item name="colorPrimary">@color/vip_gold</item>
+    </style>
+
+    <style name="Theme.App.VIP.Platinum">
+        <item name="colorPrimary">@color/vip_platinum</item>
+    </style>
+
+    <style name="Theme.App.OpenTable">
+        <item name="colorPrimary">#B4081B</item>
+        <item name="colorSecondary">#E5656B</item>
+        <item name="colorControlHighlight">#EF4C5B</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Buttons-->
+
+    <!--region Button-->
+
+    <!--region Filled-->
+
+    <!--region Primary-->
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="shapeAppearance">?shapeAppearanceSmallComponent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.Primary" parent="Widget.App.Button">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textAppearance">?textAppearanceButton2</item>
+        <item name="android:textColor">@color/selector_text_state</item>
+        <item name="android:minWidth">124dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.Primary.Large" parent="ThemeOverlay.App.Button.Primary">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textAppearance">?textAppearanceButton1</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.OnPrimary" parent="Widget.App.Button">
+        <item name="android:backgroundTint">?attr/colorOnPrimary</item>
+        <item name="rippleColor">@color/selector_ripple_primary</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textAppearance">?textAppearanceButton2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.OnPrimary.Large" parent="ThemeOverlay.App.Button.OnPrimary">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textAppearance">?textAppearanceButton1</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Secondary-->
+    <style name="ThemeOverlay.App.Button.Secondary" parent="Widget.App.Button">
+        <item name="android:backgroundTint">@color/selector_secondary_state</item>
+        <item name="android:textColor">@color/selector_text_state</item>
+        <item name="android:textAppearance">?textAppearanceButton2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.Secondary.Large" parent="ThemeOverlay.App.Button.Secondary">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textAppearance">?textAppearanceButton1</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Tertiary-->
+    <style name="ThemeOverlay.App.Button.Tertiary" parent="Widget.App.Button">
+        <item name="android:textColor">@color/selector_text_state</item>
+        <item name="android:textAppearance">?textAppearanceButton2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.Tertiary.Large" parent="ThemeOverlay.App.Button.Tertiary">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textAppearance">?textAppearanceButton1</item>
+    </style>
+    <!--endregion-->
+    <!--endregion-->
+
+    <!--region Outlined-->
+    <style name="Widget.App.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">?shapeAppearanceSmallComponent</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.OutlinedButton.Primary" parent="Widget.App.OutlinedButton">
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="android:minWidth">124dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textAppearance">?textAppearanceButton2</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ThemeOverlay.App.OutlinedButton.Primary.Large" parent="ThemeOverlay.App.OutlinedButton.Primary">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textAppearance">?textAppearanceButton1</item>
+    </style>
+    <!--endregion-->
+
+    <!--region TextButton-->
+    <style name="Widget.App.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="shapeAppearance">?shapeAppearanceSmallComponent</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextButton.Dialog.Primary" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textAppearance">?attr/textAppearanceButton2</item>
+        <item name="android:textColor">?android:colorPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextButton.Primary" parent="Widget.App.TextButton">
+        <item name="android:textAppearance">?attr/textAppearanceButton2</item>
+        <item name="android:textColor">?android:colorPrimary</item>
+        <item name="android:iconTint">?android:colorPrimary</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextButton.Primary.Large" parent="Widget.App.TextButton">
+        <item name="android:textAppearance">?attr/textAppearanceButton1</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:iconTint">?android:colorPrimary</item>
+    </style>
+    <!--endregion-->
+
+    <style name="Widget.App.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton" />
+
+    <style name="Widget.App.FloatingActionButton.Primary" parent="Widget.App.FloatingActionButton">
+        <item name="backgroundTint">@color/selector_fab_primary</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Checkbox-->
+    <style name="Widget.App.Checkbox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textAppearance">?textAppearanceBody2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Checkbox.Primary" parent="Widget.App.Checkbox">
+        <item name="buttonTint">@color/selector_app_framework_controls</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Checkbox.OnPrimary" parent="Widget.App.Checkbox">
+        <item name="buttonTint">@color/selector_app_framework_controls_inverse</item>
+        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+    </style>
+
+    <style name="Widget.App.FilterCheckBox" parent="ThemeOverlay.App.Checkbox.Primary">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:textAppearance">?textAppearanceBody1</item>
+        <item name="android:drawableTint">@color/selector_app_framework_controls</item>
+        <item name="android:textColor">@color/selector_app_framework_controls</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Radio Button-->
+    <style name="Widget.App.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:padding">12dp</item>
+        <item name="android:textAppearance">?textAppearanceBody2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButton.Primary" parent="Widget.App.RadioButton">
+        <item name="android:buttonTint">@color/selector_app_framework_controls</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButton.OnPrimary" parent="Widget.App.RadioButton">
+        <item name="android:buttonTint">?colorOnPrimary</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+    <!--endregion-->
+
+    <style name="Widget.App.ImageButton" parent="android:Widget.Material.ImageButton">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="Widget.App.Spinner" parent="android:Widget.Material.Spinner" />
+
+    <style name="Widget.App.Spinner.Underlined" parent="android:Widget.Material.Spinner.Underlined" />
+
+    <!--endregion-->
+
+    <!--region Text-->
+    <style name="Widget.App.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textAppearance">?textAppearanceBody2</item>
+    </style>
+
+    <style name="Widget.App.CheckedTextView" parent="@style/Widget.MaterialComponents.CheckedTextView">
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="Widget.App.TextView.Error" parent="Widget.App.Button">
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textAppearance">?textAppearanceBody2</item>
+    </style>
+
+    <!--region TextInputLayout-->
+    <style name="Widget.App.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="errorTextAppearance">?attr/textAppearanceBody4</item>
+        <item name="errorTextColor">?android:colorError</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout.FilledBox.Primary" parent="Widget.App.TextInputLayout.FilledBox">
+        <item name="startIconTint">@color/selector_color_app_text_input_layout_state</item>
+        <item name="boxStrokeColor">@color/selector_color_app_text_input_layout_state</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout.FilledBox.OnPrimary" parent="Widget.App.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">?attr/colorPrimary</item>
+        <item name="startIconTint">@color/selector_app_text_input_layout_state_inverse</item>
+        <item name="boxStrokeColor">@color/selector_app_text_input_layout_state_inverse</item>
+        <item name="hintTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout.FilledBox.Email" parent="Widget.App.TextInputLayout.FilledBox">
+        <item name="android:hint">@string/text_email_address</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout.FilledBox.Primary.Password" parent="ThemeOverlay.App.TextInputLayout.FilledBox.Primary">
+        <item name="endIconMode">password_toggle</item>
+        <item name="endIconTint">@drawable/selector_ic_password_visibility</item>
+        <item name="errorTextAppearance">?attr/textAppearanceBody4</item>
+        <item name="android:textColor">?attr/colorError</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout.OutlinedBox.Primary" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="startIconTint">@color/selector_color_app_text_input_layout_state</item>
+        <item name="boxStrokeColor">@color/selector_color_app_text_input_layout_state</item>
+    </style>
+    <!--endregion-->
+
+    <!--region TextInputEditText-->
+    <style name="Widget.App.TextInputEditText.FilledBox.Primary" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@drawable/shape_edittext_cursor_primary</item>
+    </style>
+
+    <style name="Widget.App.TextInputEditText.OutlinedBox">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputEditText.FilledBox.Primary.Email" parent="Widget.App.TextInputEditText.FilledBox.Primary">
+        <item name="android:lines">1</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@drawable/shape_edittext_cursor_primary</item>
+        <item name="android:imeOptions">actionNext</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputEditText.FilledBox.Primary.Password" parent="Widget.App.TextInputEditText.FilledBox.Primary">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@drawable/shape_edittext_cursor_primary</item>
+    </style>
+
+    <style name="Widget.App.TextInputEditText.FilledBox.OnPrimary" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:textColor">?colorOnPrimaryHighEmphasis</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@drawable/shape_edittext_cursor_primary_inverse
+        </item>
+    </style>
+    <!--endregion-->
+
+    <style name="Widget.App.AutoCompleteTextView.FilledBox" parent="Widget.MaterialComponents.AutoCompleteTextView.FilledBox" />
+    <!--endregion-->
+
+    <!--region View-->
+
+    <!--region Divider-->
+    <style name="Widget.App.Divider.HighEmphasis">
+        <item name="android:background">@drawable/shape_rect_divider_high_emphasis</item>
+    </style>
+
+    <style name="ThemeOverlay.App.HorizontalDivider.HighEmphasis" parent="Widget.App.Divider.HighEmphasis">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.VerticalDivider.HighEmphasis" parent="Widget.App.Divider.HighEmphasis">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Widget.App.Divider.MediumEmphasis">
+        <item name="android:background">@drawable/shape_rect_divider_medium_emphasis</item>
+    </style>
+
+    <style name="ThemeOverlay.App.HorizontalDivider.MediumEmphasis" parent="Widget.App.Divider.MediumEmphasis">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.VerticalDivider.MediumEmphasis" parent="Widget.App.Divider.MediumEmphasis">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <!--endregion-->
+
+    <!--region ImageView-->
+    <style name="Widget.App.ShapeableImageView" parent="Widget.MaterialComponents.ShapeableImageView" />
+
+    <style name="ThemeOverlay.App.Icon" parent="Widget.App.ShapeableImageView">
+        <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Dialog-->
+    <style name="Widget.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/Widget.App.MaterialAlertDialog.MaterialComponents
+        </item>
+        <item name="android:datePickerStyle">@style/Widget.App.DatePicker</item>
+        <item name="android:timePickerStyle">@style/Widget.App.TimePicker</item>
+        <item name="android:checkedTextViewStyle">@style/Widget.App.CheckedTextView</item>
+        <item name="materialAlertDialogBodyTextStyle">?textAppearanceBody2</item>
+        <item name="dialogCornerRadius">@dimen/shape_appearance_component_small</item>
+        <item name="buttonBarButtonStyle">@style/ThemeOverlay.App.TextButton.Dialog.Primary</item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="buttonBarNeutralButtonStyle">@style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="enforceMaterialTheme">true</item>
+    </style>
+
+    <style name="Widget.App.MaterialAlertDialog.MaterialComponents" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
+    </style>
+
+    <style name="Widget.App.DatePicker" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="shapeAppearanceMediumComponent">?shapeAppearanceSmallComponent</item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="materialCalendarHeaderToggleButton">
+            @style/Widget.App.DatePicker.HeaderToggleButton
+        </item>
+    </style>
+
+    <style name="Widget.App.DatePicker.Platform" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="buttonBarPositiveButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="materialCalendarHeaderToggleButton">
+            @style/Widget.App.DatePicker.HeaderToggleButton
+        </item>
+    </style>
+
+    <style name="Widget.App.DatePicker.HeaderToggleButton" parent="Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="Widget.App.TimePicker" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="shapeAppearanceMediumComponent">?shapeAppearanceMediumComponent</item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/ThemeOverlay.App.TextButton.Dialog.Primary
+        </item>
+    </style>
+    <!--endregion-->
+
+    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="rippleColor">@color/selector_ripple_primary</item>
+        <item name="cardElevation">2dp</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
+    </style>
+
+    <style name="Widget.App.TabLayout" parent="@style/Widget.MaterialComponents.TabLayout" />
+
+    <style name="ThemeOverlay.App.TabLayout.Primary" parent="@style/Widget.MaterialComponents.TabLayout.PrimarySurface">
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabRippleColor">@color/selector_ripple_on_primary</item>
+        <item name="android:background">?colorPrimary</item>
+        <item name="tabTextColor">?attr/colorOnPrimaryMediumEmphasis</item>
+        <item name="tabSelectedTextColor">?android:textColorPrimaryInverse</item>
+    </style>
+
+    <style name="Widget.App.RatingBar" parent="android:Widget.Material.RatingBar" />
+
+    <style name="Widget.App.Switch" parent="android:Widget.Material.CompoundButton.Switch" />
+
+    <style name="Widget.App.Chip.Action" parent="Widget.MaterialComponents.Chip.Action" />
+
+    <style name="Widget.App.ChipGroup" parent="@style/Widget.MaterialComponents.ChipGroup" />
+
+    <style name="Widget.App.ListViewStyle" parent="android:Widget.Material.ListView">
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <!--endregion-->
+
+    <!--region Progress Bar-->
+    <style name="Widget.App.ProgressBar" parent="android:Widget.Material.ProgressBar">
+        <item name="colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.App.ProgressBar.Small" parent="android:Widget.Material.ProgressBar.Small" />
+
+    <style name="Widget.App.ProgressBar.Inverse" parent="android:Widget.Material.Light.ProgressBar.Inverse" />
+
+    <style name="Widget.App.ProgressBarHorizontal" parent="android:Widget.Material.ProgressBar.Horizontal">
+        <item name="android:minHeight">2dp</item>
+        <item name="android:maxHeight">2dp</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Toolbar-->
+    <style name="ThemeOverlay.App.Toolbar.Primary" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleTextAppearance">?attr/textAppearanceHeadline3</item>
+        <item name="navigationIconTint">?attr/colorSurface</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Toolbar.Primary.Inverse" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="titleTextAppearance">?attr/textAppearanceHeadline3</item>
+    </style>
+    <!--endregion-->
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/jott_blue</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.App</item>
+    </style>
+
+</resources>
