@@ -7,12 +7,14 @@ plugins {
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    val kotlin_version by extra("2.0.0-Beta1")
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         val androidGradle = com.rahul.jott.gradle.Library.Plugin.androidGradle
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
 
         val kotlin = com.rahul.jott.gradle.Library.Plugin.kotlin
 

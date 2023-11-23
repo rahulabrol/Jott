@@ -1,0 +1,145 @@
+# Common configuration
+- name: DIKTAT_COMMON
+  configuration:
+    kotlinVersion: 1.8.21
+# Checks that there is no wildcard imports. Exception: allowedWildcards
+- name: FILE_WILDCARD_IMPORTS
+  enabled: false
+  configuration:
+    allowedWildcards: "io.ktor.client.request.*,io.ktor.http.*" # Allowed wildcards for imports (e.g. "import org.cqfn.diktat.*, import org.jetbrains.kotlin.*")
+    useRecommendedImportsOrder: true
+# Checks that accessible method parameters are documented in KDoc
+- name: KDOC_WITHOUT_PARAM_TAG
+  enabled: false
+# Checks that function length isn't too long
+- name: TOO_LONG_FUNCTION
+  enabled: false
+  configuration:
+    maxFunctionLength: '120' # max length of function
+    isIncludeHeader: 'false' # count function's header
+# Checks that file with zero or >1 classes has header KDoc
+- name: HEADER_MISSING_IN_NON_SINGLE_CLASS_FILE
+  enabled: false
+# Checks that variable does not contain one single letter, only exceptions are fixed names that used in industry like {i, j}
+- name: VARIABLE_NAME_INCORRECT
+  enabled: false
+# Checks that function doesn't contains too many parameters
+- name: TOO_MANY_PARAMETERS
+  enabled: true
+  configuration:
+    maxParameterListSize: '50' # max parameters size TODO TEMPORARY UPDATE FOR COMPOSE, NEEDS FIX
+# Checks that CONSTANT (treated as const val from companion object or class level) is in non UPPER_SNAKE_CASE
+- name: CONSTANT_UPPERCASE
+  enabled: false
+# Checks that accessible method throw keyword is documented in KDoc
+- name: KDOC_WITHOUT_THROWS_TAG
+  enabled: false
+# Checks that function/method name is in lowerCamelCase
+- name: FUNCTION_NAME_INCORRECT_CASE
+  enabled: false
+# Checks that no custom getters and setters are used for properties. It is a more wide rule than TRIVIAL_ACCESSORS_ARE_NOT_RECOMMENDED
+# Kotlin compiler automatically generates `get` and `set` methods for properties and also lets the possibility to override it.
+# But in all cases it is very confusing when `get` and `set` are overridden for a developer who uses this particular class.
+# Developer expects to get the value of the property, but receives some unknown value and some extra side effect hidden by the custom getter/setter.
+# Use extra functions for it instead.
+- name: CUSTOM_GETTERS_SETTERS
+  enabled: false
+# Checks that there is no empty blocks in a file.
+# If allowEmptyBlocks is true, checks that it follows correct style (have a newline)
+- name: EMPTY_BLOCK_STRUCTURE_ERROR
+  enabled: false
+  configuration:
+    # Whether a newline after `{` is required in an empty block
+    styleEmptyBlockWithNewline: 'True'
+    allowEmptyBlocks: 'False'
+# Checks that functions/methods which return boolean have special prefix like "is/should/e.t.c"
+- name: FUNCTION_BOOLEAN_PREFIX
+  enabled: false
+  configuration:
+    allowedPrefixes: "eq" # A list of functions that return boolean and are allowed to use. Input is in a form "foo, bar".
+# If file contains class, then it can't contain extension functions for the same class
+- name: EXTENSION_FUNCTION_WITH_CLASS
+  enabled: false
+# Checks that the name of variable is in lowerCamelCase and contains only ASCII letters
+- name: VARIABLE_NAME_INCORRECT_FORMAT
+  enabled: false
+# Checks that the line length is < lineLength parameter
+- name: LONG_LINE
+  enabled: true
+  configuration:
+    lineLength: '180'
+# Checks if class can be made as data class
+- name: USE_DATA_CLASS
+  enabled: false
+# Checks that the long lambda has parameters
+- name: TOO_MANY_LINES_IN_LAMBDA
+  enabled: false
+  configuration:
+    maxLambdaLength: 20 # max length of lambda without parameters
+- name: FILE_UNORDERED_IMPORTS
+  enabled: false
+- name: WRONG_INDENTATION
+  enabled: false
+# Checks magic number
+- name: MAGIC_NUMBER
+  enabled: true
+  configuration:
+    # Ignore numbers from test
+    ignoreTest: "true"
+    # Ignore numbers
+    ignoreNumbers: "-1, 1, 0, 2, 0.0, 1.0, 0f, 1f, 0.0f, 1.0f, 4, 8, 12, 16"
+    # Is ignore override hashCode function
+    ignoreHashCodeFunction: "true"
+    # Is ignore property
+    ignorePropertyDeclaration: "false"
+    # Is ignore local variable
+    ignoreLocalVariableDeclaration: "false"
+    # Is ignore constant
+    ignoreConstantDeclaration: "true"
+    # Is ignore property in companion object
+    ignoreCompanionObjectPropertyDeclaration: "true"
+    # Is ignore numbers in enum
+    ignoreEnums: "false"
+    # Is ignore number in ranges
+    ignoreRanges: "false"
+    # Is ignore number in extension function
+    ignoreExtensionFunctions: "false"
+    ed: true
+# Checks that file does not contain lines > maxSize
+# TODO This Rule should be removed when networking is available and the static data can be removed
+# This rule is temporarily applied to enable returning static data in our remote implementations.
+- name: FILE_IS_TOO_LONG
+  enabled: false
+  configuration:
+    # number of lines
+    maxSize: '3000'
+# Checks that each when statement have else in the end
+- name: WHEN_WITHOUT_ELSE
+  enabled: false
+# Checks trailing comma
+- name: TRAILING_COMMA
+  enabled: true
+  configuration:
+    # VALUE_ARGUMENT
+    valueArgument: false
+    # VALUE_PARAMETER
+    valueParameter: false
+    # REFERENCE_EXPRESSION
+    indices: false
+    # WHEN_CONDITION_WITH_EXPRESSION
+    whenConditions: false
+    # STRING_TEMPLATE
+    collectionLiteral: false
+    # TYPE_PROJECTION
+    typeArgument: false
+    # TYPE_PARAMETER
+    typeParameter: false
+    # DESTRUCTURING_DECLARATION_ENTRY
+    destructuringDeclaration: false
+# Inspection that checks if a long dot qualified expression is used in condition or as an argument
+- name: COMPLEX_EXPRESSION
+  enabled: false
+- name: WRONG_ORDER_IN_CLASS_LIKE_STRUCTURES
+  enabled: false
+- name: BLANK_LINE_BETWEEN_PROPERTIES
+  enabled: false

@@ -14,5 +14,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Jott"
-include(":app")
-include(":dsm")
+
+val includeAppTarget get() = (System.getenv("INCLUDE_APP_TARGET") ?: "false").toBoolean()
+
+val moduleList = mutableListOf(
+    ":app",
+    ":dsm",
+)
+include(moduleList)

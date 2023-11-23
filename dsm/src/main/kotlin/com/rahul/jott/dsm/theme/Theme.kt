@@ -28,7 +28,8 @@ import com.rahul.jott.dsm.theme.internal.Typography
  */
 @Composable
 fun JottTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) AppMainDarkColors else AppMainLightColors
     SystemUiColor(color = colors.surface)

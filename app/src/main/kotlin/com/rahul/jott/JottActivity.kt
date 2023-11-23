@@ -23,7 +23,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class JottActivity : ComponentActivity() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {

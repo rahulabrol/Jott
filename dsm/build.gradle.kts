@@ -64,4 +64,5 @@ dependencies {
     //Coil
     implementation(com.rahul.jott.gradle.Library.Coil.core)
     implementation(com.rahul.jott.gradle.Library.Coil.compose)
+    implementation("androidx.core:core-ktx:+")
 }

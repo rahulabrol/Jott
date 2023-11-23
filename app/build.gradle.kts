@@ -1,6 +1,5 @@
 @file:Suppress("UNCHECKED_CAST", "UnstableApiUsage")
 
-import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.rahul.jott.gradle.Android
 import com.rahul.jott.gradle.Library
 import java.io.FileInputStream
@@ -12,8 +11,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-//    id("com.google.gms.google-services")
-//    id("com.google.firebase.crashlytics")
 }
 
 hilt {
@@ -143,6 +140,7 @@ dependencies {
 
     //Hilt
     implementation(Library.Hilt.core)
+    implementation("androidx.core:core-ktx:+")
     kapt(Library.Hilt.compiler)
 
     //Accompanist
