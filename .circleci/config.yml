@@ -1,0 +1,354 @@
+version: 2.1
+orbs:
+  android: circleci/android@2.2.0
+  gcp-cli: circleci/gcp-cli@2.2.0
+
+commands:
+  build-bootstrap:
+    description: Bootstrapping the project.....
+    steps:
+      - run:
+          name: "Java version...."
+          command: java -version
+      - checkout
+      - run:
+          name: "Current branch...."
+          command: git branch
+      - run:
+          name: "Setting up Git to push current branch to a remote branch with same name...."
+          command: git config push.default current
+      - run:
+          name: "Setting up Git user name"
+          command: |
+            git config user.email $ANDROID_BUILD_MACHINE_EMAIL
+            git config user.name "Machine user"
+      - run:
+          name: "Current branch...."
+          command: git branch
+
+jobs:
+
+  ##--------------------------------- DIKTAT ---------------------------------------------------------
+  ##--------------------------------- DIKTAT ---------------------------------------------------------
+  ##--------------------------------- DIKTAT ---------------------------------------------------------
+
+  diktat:
+    docker:
+      - image: "cimg/android:2023.05.1"
+    resource_class: large
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - run:
+          name: "Diktat Check"
+          command: |
+            ./gradlew diktatCheck
+#      - run:
+#          name: "Commit Diktat fix changes"
+#          command: |
+#            echo "GIT PUSH AND COMMIT ...."
+#            if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+#              echo "DIKTAT HAS FORMATTED SOME CODES. PUSHING TO THE REMOTE....";
+#              git commit -a -m "[Machine User]: APPLIED DIKTAT CHANGES" -m "Applied Diktat to formatted file correctly...."
+#              git push
+#            else
+#              echo "DIKTAT DID NOT DETECT ANY FILE THAT NEEDS TO BE FORMATTED. NO CODE NEEDS TO BE PUSHED....";
+#            fi
+#            echo "END GIT PUSH AND COMMIT ...."
+#          when: always
+      - android/save-gradle-cache
+
+  ##--------------------------------- SPOTLESS ---------------------------------------------------------
+  ##--------------------------------- SPOTLESS ---------------------------------------------------------
+  ##--------------------------------- SPOTLESS ---------------------------------------------------------
+
+  spotless:
+    docker:
+      - image: "cimg/android:2023.05.1"
+    resource_class: large
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - run:
+          name: "Building Spotless Check"
+          command: |
+            echo "SPOTLESS CHECK ...."
+            ./gradlew spotlessCheck
+            echo "END SPOTELESS CHECK ...."
+#      - run:
+#          name: "Commit spotless fix changes"
+#          command: |
+#            echo "GIT PUSH AND COMMIT ...."
+#            if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+#              echo "SPOTLESS HAS FORMATTED SOME CODES. PUSHING TO THE REMOTE....";
+#              git commit -a -m "[Machine User]: APPLIED SPOTELESS CHANGES" -m "Applied Spotless to formatted file correctly...."
+#              git push
+#              echo "END SPOTLESS HAS FORMATTED SOME CODES. PUSHING TO THE REMOTE....";
+#            else
+#              echo "SPOTLESS DID NOT DETECT ANY FILE THAT NEEDS TO BE FORMATTED. NO CODE NEEDS TO BE PUSHED....";
+#            fi
+#            echo "END GIT PUSH AND COMMIT ...."
+#          when: always
+#      - run:
+#          name: "Building Spotless Check"
+#          command: |
+#            echo "SPOTLESS CHECK ...."
+#            ./gradlew -q spotlessCheck
+#            echo "END SPOTLESS CHECK ...."
+      - android/save-gradle-cache
+
+  ##---------------------------------RELEASE UNIT TEST---------------------------------------------------------
+  ##---------------------------------RELEASE UNIT TEST---------------------------------------------------------
+  ##---------------------------------RELEASE UNIT TEST---------------------------------------------------------
+
+  unit-tests:
+    docker:
+      - image: "cimg/android:2023.05.1-ndk"
+    resource_class: xlarge
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - android/run-tests:
+          test-command: ./gradlew testRelease
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+      - android/save-gradle-cache
+
+  #---------------------------------- RELEASE ANDROID TEST------------------------------------------
+  #----------------------------------RELEASE ANDROID TEST-------------------------------------------
+  #----------------------------------RELEASE ANDROID TEST-------------------------------------------
+
+  android-tests:
+    parameters:
+      system-image:
+        type: string
+        default: system-images;android-32;google_apis_playstore;x86_64
+    executor:
+      name: android/android-machine
+      resource-class: xlarge
+      tag: 2023.05.1
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - android/start-emulator-and-run-tests:
+          post-emulator-launch-assemble-command: ./gradlew assembleAndroidTest
+          test-command: ./gradlew --no-daemon connectedAndroidTest
+          system-image: << parameters.system-image >>
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/build/outputs/androidTest-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+      - store_artifacts:
+          path: ~/test-results/junit
+      - android/save-gradle-cache
+      - run:
+          name: Output the memory usage
+          command: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes
+          when: always
+
+  ##----------------------------------- TEST COVERAGE -------------------------------------------------------
+  ##----------------------------------- TEST COVERAGE -------------------------------------------------------
+  ##----------------------------------- TEST COVERAGE -------------------------------------------------------
+
+  test-coverage:
+    docker:
+      - image: "cimg/android:2023.05.1"
+    resource_class: 2xlarge
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - run:
+          name: Generate kover report
+          command: |
+            ./gradlew koverXmlReport
+      - kover/parse_report:
+          title: Parsing home module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "home/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing configurations module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "configuration/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing car module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "car/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing flight module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "flight/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing hotel module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "hotel/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing onboarding module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "onboarding/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing travel-destination module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "travel-destination/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing type-search module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "type-search/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - kover/parse_report:
+          title: Parsing date module test report
+          threshold: TEST_COVERAGE_RATE_THRESHOLD
+          report-path: "date-time/build/reports/kover/project-xml/report.xml"
+          test-coverage-type: "LINE"
+      - android/save-gradle-cache
+
+  ##--------------------------------- BUILD ---------------------------------------------------
+  ##--------------------------------- BUILD ---------------------------------------------------
+  ##--------------------------------- BUILD ---------------------------------------------------
+
+  build:
+    docker:
+      - image: "cimg/android:2023.05.1-ndk"
+    resource_class: 2xlarge
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      #      - owasp
+#      - run:
+#          name: "Lint...."
+#          command: |
+#            ./gradlew lint
+      - run:
+          name: "Building App...."
+          command: |
+            ./gradlew assembleRelease \
+              -Dorg.gradle.daemon=false -Dorg.gradle.caching=false
+      - android/save-gradle-cache
+
+  ##--------------------------------- LINT ---------------------------------------------------
+  ##--------------------------------- LINT ---------------------------------------------------
+  ##--------------------------------- LINT ---------------------------------------------------
+
+  lint:
+    docker:
+      - image: "cimg/android:2023.05.1"
+    resource_class: xlarge
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - run:
+          name: "Lint...."
+          command: |
+            ./gradlew lintRelease
+      - android/save-gradle-cache
+
+  ##--------------------------------- ASSEMBLE UI TEST ---------------------------------------
+  ##--------------------------------- ASSEMBLE UI TEST ---------------------------------------
+  ##--------------------------------- ASSEMBLE UI TEST ---------------------------------------
+
+  assemble-ui-test:
+    docker:
+      - image: "cimg/android:2023.05.1"
+    resource_class: 2xlarge
+    steps:
+      - build-bootstrap
+      - android/restore-gradle-cache
+      - run:
+          name: "Assemble UI Test...."
+          command: |
+            ./gradlew assembleAndroidTest
+      - android/save-gradle-cache
+
+  ##--------------------------------- TRIGGER CORE BUILD --------------------------------------
+  ##--------------------------------- TRIGGER CORE BUILD --------------------------------------
+  ##--------------------------------- TRIGGER CORE BUILD --------------------------------------
+
+  trigger-core-build:
+    docker:
+      - image: "cimg/android:2023.05.1"
+    resource_class: large
+    steps:
+      - run:
+          name: "Trigger core build...."
+          command: |
+            curl --location --request POST 'https://circleci.com/api/v2/project/github/pcln/android-negotiator/pipeline' \
+            --header "Circle-Token: ${CIRCLE_TOKEN}" \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+                "branch":"epic-home-experience-integration",
+                "parameters": {
+                    "conditionaltrigger": true
+                }
+            }'
+
+  ##--------------------------------- WORKFLOW ---------------------------------------------------------
+  ##--------------------------------- WORKFLOW ---------------------------------------------------------
+  ##--------------------------------- WORKFLOW ---------------------------------------------------------
+
+common_context: &common_context
+  context:
+    - pcln-org-nativeapp-android-global
+
+dev_branches: &develop_branches
+  branches:
+    only:
+      - /feature-.*/
+      - /bugfix-.*/
+      - /epic-.*/
+
+workflows:
+  version: 2
+  platform-pull-request:
+    jobs:
+      - diktat:
+          filters:
+            <<: *develop_branches
+          <<: *common_context
+      - spotless:
+          requires:
+            - diktat
+          filters:
+            <<: *develop_branches
+          <<: *common_context
+      - lint:
+          requires:
+            - diktat
+          filters:
+            <<: *develop_branches
+          <<: *common_context
+      - test-coverage:
+          name: test-coverage
+          requires:
+            - spotless
+          filters:
+            <<: *develop_branches
+          <<: *common_context
+      - assemble-ui-test:
+          requires:
+            - spotless
+          filters:
+            <<: *develop_branches
+          <<: *common_context
+      - build:
+          name: build
+          requires:
+            - spotless
+          filters:
+            <<: *develop_branches
+          <<: *common_context
