@@ -8,9 +8,12 @@ import androidx.annotation.RequiresApi
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Surface
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.rahul.jott.app.navigation.AppNavigation
 import com.rahul.jott.dsm.theme.AppTheme
 import com.rahul.jott.dsm.theme.JottTheme
+import com.rahul.jott.navigation.rememberAppAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -25,6 +28,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 @AndroidEntryPoint
 class JottActivity : ComponentActivity() {
 
+    @OptIn(ExperimentalComposeUiApi::class)
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -33,7 +37,11 @@ class JottActivity : ComponentActivity() {
         setContent {
             JottTheme {
                 Surface(color = AppTheme.colors.background) {
-//                    AppNavigation()
+                    AppNavigation(
+                        navController = rememberAppAnimatedNavController(),
+                        launchDeeplinkUri = { },
+                        deeplinkUrl = null
+                    )
                 }
             }
         }

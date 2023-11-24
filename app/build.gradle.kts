@@ -125,6 +125,8 @@ android {
 dependencies {
 //    implementation("com.google.firebase:firebase-crashlytics-gradle:2.9.9")
     implementation(project(":dsm"))
+    implementation(project(":app-navigation"))
+    implementation(project(":navigation"))
 
     implementation(Library.Kotlin.kotlinxSerialization)
     implementation(Library.Kotlin.kotlinXCollections)

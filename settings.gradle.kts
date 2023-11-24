@@ -20,5 +20,9 @@ val includeAppTarget get() = (System.getenv("INCLUDE_APP_TARGET") ?: "false").to
 val moduleList = mutableListOf(
     ":app",
     ":dsm",
+    ":app-navigation",
+    ":navigation",
+    ":global-ux",
+    ":home",
 )
 include(moduleList)

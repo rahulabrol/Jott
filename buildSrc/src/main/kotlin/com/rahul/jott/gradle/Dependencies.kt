@@ -62,7 +62,7 @@ object Version {
     const val coroutines = "1.6.4"
     const val leakcanary = "2.10"
     const val composeBom = "2023.05.01"
-    const val composeCompiler = "1.4.7"
+    const val composeCompiler = "1.5.4"
     const val activityCompose = "1.7.2"
     const val constraintCompose = "1.0.1"
     const val diktat = "1.2.4.2"

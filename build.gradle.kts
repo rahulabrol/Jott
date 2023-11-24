@@ -4,17 +4,18 @@ plugins {
     id("org.jetbrains.dokka") version "1.5.0"
     id("org.cqfn.diktat.diktat-gradle-plugin") version "1.0.3"
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
+    id("com.android.library") version "8.1.2" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.20" apply false
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    val kotlin_version by extra("2.0.0-Beta1")
+//    val kotlin_version by extra("2.0.0-Beta1")
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         val androidGradle = com.rahul.jott.gradle.Library.Plugin.androidGradle
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
 
         val kotlin = com.rahul.jott.gradle.Library.Plugin.kotlin
 
@@ -26,8 +27,8 @@ buildscript {
         classpath(kotlin)
         classpath(navigationSafeArg)
         classpath(hilt)
-        classpath(com.rahul.jott.gradle.Library.Plugin.googleGmsServices)
-        classpath(com.rahul.jott.gradle.Library.Firebase.firebaseCrashlytics)
+//        classpath(com.rahul.jott.gradle.Library.Plugin.googleGmsServices)
+//        classpath(com.rahul.jott.gradle.Library.Firebase.firebaseCrashlytics)
     }
 }
 
@@ -125,7 +126,7 @@ spotless {
 
 allprojects {
     subprojects{
-        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
+        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
                 jvmTarget = "1.8"
 
