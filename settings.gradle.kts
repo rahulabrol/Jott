@@ -24,5 +24,6 @@ val moduleList = mutableListOf(
     ":navigation",
     ":global-ux",
     ":home",
+    ":networking",
 )
 include(moduleList)

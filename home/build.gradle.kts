@@ -72,6 +72,7 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":dsm"))
     implementation(project(":global-ux"))
+    implementation(project(":networking"))
 
     //Coil
     implementation(Library.Coil.core)

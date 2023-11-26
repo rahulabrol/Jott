@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedResources">
+    <!-- General -->
+    <string name="close">Close</string>
+    <string name="map">Map</string>
+    <string name="next">Next</string>
+    <string name="done">Done</string>
+    <string name="edit">Edit</string>
+    <string name="info">Info</string>
+    <string name="Allow">Allow</string>
+    <string name="Deny">Deny</string>
+    <string name="settings">Settings</string>
+    <string name="ok">OK</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="back">Back</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="retry">Retry</string>
+    <string name="no_network">No network connection available</string>
+    <string name="do_you_want_to">Do you want to %s ?</string>
+    <string name="unable_to_contact_priceline_number">Unable to contact Priceline number</string>
+    <string name="current_location">Current Location</string>
+    <string name="where_are_you_going">Where are you going?</string>
+    <string name="where_are_you_departing_from">Where are you departing from?</string>
+
+    <!-- Permissions -->
+    <string name="allow_while_using_app">Allow only while using the app</string>
+    <string name="while_using_app">While using the app</string>
+    <string name="allow_priceline_storage_contacts">Allow Priceline access to this device’s location, storage and contacts.</string>
+    <string name="to_change_your_settings_on_your_device">To change your selection, please go to Settings on your device</string>
+
+    <!-- Auth -->
+    <string name="sign_in_to_priceline">Sign in to Priceline</string>
+    <string name="create_an_account">Create an Account</string>
+
+<!--    Recent Searches-->
+    <string name="recent_searches">Recent Searches</string>
+
+    <!--Content Description-->
+    <string name="navigate_back">Navigate to previous screen</string>
+
+    <!--Filter-->
+    <string name="filter_item_more">Show More</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="reset">Reset</string>
+
+</resources>

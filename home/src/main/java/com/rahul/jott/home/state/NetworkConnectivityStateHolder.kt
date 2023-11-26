@@ -1,8 +1,13 @@
 package com.rahul.jott.home.state
 
 import androidx.compose.material.SnackbarDuration
+import com.rahul.jott.android.networking.Network
+import com.rahul.jott.android.networking.NetworkConnectivity
+import com.rahul.jott.global.R
 import com.rahul.jott.global.base.state.StateHolder2
 import com.rahul.jott.global.base.utils.TextResource
+import com.rahul.jott.global.snackbar.SnackBarUiState
+import com.rahul.jott.home.util.launchFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -24,8 +29,8 @@ class NetworkConnectivityStateHolder @Inject constructor(
     override val state: Flow<UiState> = combine(_state, networkState()) { internal, _ ->
         UiState(
             errorSnackBar = SnackBarUiState(
-                message = TextResource.fromStringId(com.priceline.android.global.R.string.no_network),
-                actionLabel = TextResource.fromStringId(com.priceline.android.global.R.string.dismiss),
+                message = TextResource.fromStringId(R.string.no_network),
+                actionLabel = TextResource.fromStringId(R.string.dismiss),
                 duration = SnackbarDuration.Indefinite
             ).takeIf {
                 internal.show
