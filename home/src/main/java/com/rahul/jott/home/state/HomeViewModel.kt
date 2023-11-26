@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(
     )
 
     fun onBottomNavigationTabSelected(it: HomeBottomNavigationBarStateHolder.UiState.Tab) {
-
+        println(it)
     }
 
     /**

@@ -42,6 +42,8 @@ internal fun HomeNavigation(
             route = HomeBottomNavigationScreens.createRoute(HomeBottomNavigationScreens.Book),
             deepLinks = HomeBottomNavigationScreens.Book.deeplinks()
         ) {
+            println(modifier)
+            println(savedStateHandle)
 //            BookScreen(
 //                modifier = modifier,
 //                savedStateHandle = savedStateHandle,

@@ -4,12 +4,11 @@ plugins {
     id("org.jetbrains.dokka") version "1.5.0"
     id("org.cqfn.diktat.diktat-gradle-plugin") version "1.0.3"
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
-    id("com.android.library") version "8.1.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.20" apply false
+//    id("com.android.library") version "8.1.2" apply false
+//    id("org.jetbrains.kotlin.android") version "1.9.20" apply false
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-//    val kotlin_version by extra("2.0.0-Beta1")
     repositories {
         google()
         mavenCentral()

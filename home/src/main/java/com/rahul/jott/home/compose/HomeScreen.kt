@@ -35,6 +35,7 @@ import com.rahul.jott.dsm.material.AppBottomNavigationItemText
 import com.rahul.jott.dsm.material.AppScaffold
 import com.rahul.jott.dsm.material.AppTopAppBar
 import com.rahul.jott.dsm.theme.AppTheme
+import com.rahul.jott.global.base.utils.asString
 import com.rahul.jott.home.compose.navigation.HomeNavigation
 import com.rahul.jott.home.state.HomeBottomNavigationBarStateHolder
 import com.rahul.jott.home.state.HomeViewModel
@@ -62,15 +63,12 @@ fun HomeScreen(
 
     ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val context = LocalContext.current
-
     val scaffoldState = rememberScaffoldState()
     val resources = LocalContext.current.resources
 
-
     HomeContent(
         modifier = modifier,
-        resources,
+        resources = resources,
         uiState = state,
         savedStateHandle = savedStateHandle,
         scaffoldState = scaffoldState,
@@ -148,18 +146,18 @@ private fun HomeContent(
                 selectedTab = { uiState.bottomNavigationBar.selectedTabType },
                 savedStateHandle = savedStateHandle,
             )
-//            val snackBarState = uiState.network.errorSnackBar
-//            when {
-//                snackBarState != null -> LaunchedEffect(snackBarState) {
-//                    scaffoldState.snackbarHostState.showSnackbar(
-//                        message = snackBarState.message.asString(resources),
-//                        actionLabel = snackBarState.actionLabel.asString(resources),
-//                        duration = snackBarState.duration
-//                    )
-//                }
-//                // snackBar state is null, dismiss current snackBar
-//                else -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-//            }
+            val snackBarState = uiState.network.errorSnackBar
+            when {
+                snackBarState != null -> LaunchedEffect(snackBarState) {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = snackBarState.message.asString(resources),
+                        actionLabel = snackBarState.actionLabel.asString(resources),
+                        duration = snackBarState.duration
+                    )
+                }
+                // snackBar state is null, dismiss current snackBar
+                else -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
+            }
         }
     }
 }
@@ -230,7 +228,7 @@ private fun HomeContentPreview() {
                 selectedTabType = HomeBottomNavigationBarStateHolder.UiState.Tab.Type.Home,
                 tabs = emptyList(),
             ),
-//            network = NetworkConnectivityStateHolder.UiState()
+            network = NetworkConnectivityStateHolder.UiState()
         ),
         savedStateHandle = SavedStateHandle(),
         onBottomNavigationBarItemSelected = {},

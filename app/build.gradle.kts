@@ -127,6 +127,7 @@ dependencies {
     implementation(project(":dsm"))
     implementation(project(":app-navigation"))
     implementation(project(":navigation"))
+    implementation(project(":networking"))
 
     implementation(Library.Kotlin.kotlinxSerialization)
     implementation(Library.Kotlin.kotlinXCollections)
@@ -142,7 +143,7 @@ dependencies {
 
     //Hilt
     implementation(Library.Hilt.core)
-    implementation("androidx.core:core-ktx:+")
+    implementation("androidx.core:core-ktx:1.12.0")
     kapt(Library.Hilt.compiler)
 
     //Accompanist

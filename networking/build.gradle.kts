@@ -1,6 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 import com.rahul.jott.gradle.Android
+import com.rahul.jott.gradle.Library
 
 plugins {
     id("com.android.library")
@@ -9,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "com.priceline.android.networking"
+    namespace = "com.rahul.jott.networking"
 
     compileSdk = Android.compileSdk
     buildToolsVersion = Android.buildTools
@@ -39,11 +40,11 @@ android {
 
 dependencies {
     //Hilt
-    implementation(com.rahul.jott.gradle.Library.Hilt.core)
-    kapt(com.rahul.jott.gradle.Library.Hilt.compiler)
+    implementation(Library.Hilt.core)
+    kapt(Library.Hilt.compiler)
 
-    testImplementation(com.rahul.jott.gradle.Library.junit)
+    testImplementation(Library.junit)
 
-    androidTestImplementation(com.rahul.jott.gradle.Library.Androidx.Test.testJunit)
-    androidTestImplementation(com.rahul.jott.gradle.Library.Androidx.Test.espresso)
+    androidTestImplementation(Library.Androidx.Test.testJunit)
+    androidTestImplementation(Library.Androidx.Test.espresso)
 }

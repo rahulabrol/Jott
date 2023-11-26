@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":dsm"))
     implementation(project(":home"))
+    implementation(project(":networking"))
 
     //Android X
     implementation(Library.Androidx.coreKtx)
